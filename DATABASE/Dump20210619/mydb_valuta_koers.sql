@@ -1,0 +1,59 @@
+-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+--
+-- Host: localhost    Database: mydb
+-- ------------------------------------------------------
+-- Server version	8.0.23
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `valuta_koers`
+--
+
+DROP TABLE IF EXISTS `valuta_koers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `valuta_koers` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `koers_date` date NOT NULL,
+  `koers_opkoop` float DEFAULT NULL,
+  `koers_verkoop` float DEFAULT NULL,
+  `bank1_id` int unsigned NOT NULL,
+  `valuta_soort_id` int unsigned NOT NULL,
+  PRIMARY KEY (`id`,`bank1_id`,`valuta_soort_id`),
+  KEY `fk_valuta_koers_bank1_idx` (`bank1_id`),
+  KEY `fk_valuta_koers_valuta_soort1_idx` (`valuta_soort_id`),
+  CONSTRAINT `fk_valuta_koers_bank1` FOREIGN KEY (`bank1_id`) REFERENCES `bank` (`id`),
+  CONSTRAINT `fk_valuta_koers_valuta_soort1` FOREIGN KEY (`valuta_soort_id`) REFERENCES `valuta_soort` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `valuta_koers`
+--
+
+LOCK TABLES `valuta_koers` WRITE;
+/*!40000 ALTER TABLE `valuta_koers` DISABLE KEYS */;
+INSERT INTO `valuta_koers` VALUES (2,'2021-05-10',13.55,13.59,2,1),(3,'2021-05-10',13.57,13.58,3,1),(4,'2021-05-10',13.58,13.65,4,1),(5,'2021-05-10',13.58,13.61,5,1),(6,'2021-05-10',15.55,15.65,1,2),(7,'2021-05-10',15.8,15.85,2,2),(8,'2021-05-10',15.81,15.83,3,2),(9,'2021-05-10',15.81,15.82,4,2),(10,'2021-05-10',15.82,15.84,5,2),(11,'2021-05-11',13.6,13.63,1,1),(12,'2021-05-11',13.59,13.62,2,1),(13,'2021-05-11',13.57,13.58,3,1),(14,'2021-05-11',13.61,13.65,4,1),(15,'2021-05-11',15.81,15.82,1,2),(15,'2021-05-11',13.61,13.65,5,1),(16,'2021-05-11',15.81,15.82,2,2),(17,'2021-05-11',15.81,15.82,3,2),(18,'2021-05-11',15.81,15.82,4,2),(19,'2021-05-11',15.81,15.82,5,2),(20,'2021-05-12',13.6,13.63,1,1),(21,'2021-05-12',13.59,13.62,2,1),(22,'2021-05-12',13.57,13.58,3,1),(23,'2021-05-12',13.61,13.65,4,1),(24,'2021-05-12',13.61,13.65,5,1),(25,'2021-05-12',15.81,15.82,1,2),(26,'2021-05-12',15.81,15.82,2,2),(27,'2021-05-12',15.81,15.82,3,2),(28,'2021-05-12',15.81,15.82,4,2),(29,'2021-05-12',15.81,15.82,5,2),(30,'2021-05-13',13.6,13.63,1,1),(31,'2021-05-13',13.59,13.62,2,1),(32,'2021-05-13',13.57,13.58,3,1),(33,'2021-05-13',13.61,13.65,4,1),(34,'2021-05-13',13.61,13.65,5,1),(35,'2021-05-13',15.81,15.82,1,2),(36,'2021-05-13',15.81,15.82,2,2),(37,'2021-05-13',15.81,15.82,3,2),(38,'2021-05-13',15.81,15.82,4,2),(39,'2021-05-13',15.81,15.82,5,2),(40,'2021-05-14',13.66,13.68,1,2),(41,'2021-05-14',13.65,13.68,2,2),(42,'2021-05-14',13.66,13.68,3,2),(43,'2021-05-14',13.65,13.68,4,2),(44,'2021-05-14',13.66,13.69,5,2),(45,'2021-05-14',15.93,16.05,1,2),(46,'2021-05-14',15.95,16.02,2,2),(47,'2021-05-14',15.95,16.03,3,2),(48,'2021-05-14',15.94,16.03,4,2),(49,'2021-05-14',15.95,16.02,5,2);
+/*!40000 ALTER TABLE `valuta_koers` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-06-19 21:56:07
